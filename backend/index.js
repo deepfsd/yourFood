@@ -20,6 +20,7 @@ app.get('/', (req,res)=>{
 })
 
 app.use('/api',require('./Routes/CreateUser'));
+app.use('/api',require('./Routes/DisplayData'));
 
 mongo()
 .then(()=>{

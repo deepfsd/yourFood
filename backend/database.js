@@ -15,9 +15,13 @@ const mongoDB = async () => {
 
 async function fetchData() {
     try {
-        const fetched_data = mongoose.connection.db.collection("food_items");
-        const data = await fetched_data.find({}).toArray();
-        // console.log(data);
+        const food_item = mongoose.connection.db.collection("food_items");
+        const food_cat = mongoose.connection.db.collection("food_category");
+    
+        global.food_items = await food_item.find({}).toArray();
+        global.food_category = await food_cat.find({}).toArray();
+        
+        console.log();
     } catch (error) {
         console.error('Error fetching data:', error);
     }
