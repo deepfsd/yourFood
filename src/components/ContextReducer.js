@@ -4,7 +4,12 @@ const CartStateContext = createContext();
 const CartDispatchContext = createContext();
 
 const reducer = (state, action)=>{
-
+    switch(action.type){
+        case "ADD":
+            return [...state, {}]
+        default:
+            console.log("Error in Reducer");
+    }
 }
 
 export const CartProvider = ({children})=>{
