@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatchCart, useCart } from './ContextReducer';
 export default function Card(props) {
     let dispatch = useDispatchCart();
+    let data = useCart();
     let options = props.options;
     let priceOption = Object.keys(options);
     const [qty, setQty] = useState(1);
@@ -9,6 +10,7 @@ export default function Card(props) {
 
     const handleAddToCart = async ()=>{
         await dispatch({type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: props.finalPrice, qty: qty, size: size})
+        console.log(data);
     }
     return (
         <div>
@@ -67,4 +69,4 @@ export default function Card(props) {
         </div>
     )
 }
-// https://youtu.be/JbsZjKhMAqY?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=1511
+// https://youtu.be/JbsZjKhMAqY?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=1680
