@@ -5,7 +5,7 @@ export default function Card(props) {
     let options = props.options;
     let priceOption = Object.keys(options)
     const handleAddToCart = ()=>{
-        
+
     }
     return (
         <div>
@@ -64,4 +64,4 @@ export default function Card(props) {
         </div>
     )
 }
-//https://youtu.be/E0DEIcAwejk?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=183
+// https://youtu.be/JbsZjKhMAqY?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=193
