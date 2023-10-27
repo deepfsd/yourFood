@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useDispatchCart, useCart } from './ContextReducer';
 export default function Card(props) {
 
     let options = props.options;
@@ -64,4 +64,4 @@ export default function Card(props) {
         </div>
     )
 }
-// https://youtu.be/JbsZjKhMAqY?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=193
+// https://youtu.be/JbsZjKhMAqY?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=1002
