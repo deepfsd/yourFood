@@ -28,23 +28,22 @@ export default function Cart() {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            // {data.map((food, index)=>(
-                            //     <tr>
-                            //         <th scope='row'>{index + 1}</th>
-                            //         <td>{food.name}</td>
-                            //         <td>{food.qty}</td>
-                            //         <td>{food.size}</td>
-                            //         <td>{food.price}</td>
-                            //     </tr>
-                            // ))}
-                        }
+                            {data.map((food, index)=>(
+                                <tr>
+                                    <th scope='row'>{index + 1}</th>
+                                    <td>{food.name}</td>
+                                    <td>{food.qty}</td>
+                                    <td>{food.size}</td>
+                                    <td>{food.price}</td>
+                                    <td> <button type='button' className='btn p-0'><img src={trash} alt="delete" onClick={()=>{dispatch({type:"REMOVE", index: index})}}/></button></td>
+                                </tr>
+                            ))}
                     </tbody>
             </table>
             {
-                // <div>
-                //     <h1 className='fs-2'>Total Price: {totalPrice}/-</h1>
-                // </div>
+                <div>
+                    <h1 className='fs-2'>Total Price: {totalPrice}/-</h1>
+                </div>
             }
             <div>
                 <button className='btn bg-success mt-5'>Check Out</button>
@@ -53,4 +52,4 @@ export default function Cart() {
     </div>
   )
 }
-//https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=296
+//https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=384
