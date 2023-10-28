@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useDispatchCart, useCart } from './ContextReducer';
 export default function Card(props) {
     let dispatch = useDispatchCart();
     let data = useCart();
+    const priceRef = useRef();
     let options = props.options;
     let priceOption = Object.keys(options);
     const [qty, setQty] = useState(1);
     const [size, setSize] = useState("");
 
     const handleAddToCart = async ()=>{
-        await dispatch({type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: props.finalPrice, qty: qty, size: size})
+        await dispatch({type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size})
         console.log(data);
     }
     let finalPrice = qty * parseInt(options[size]);
+    useEffect(()=>{
+        setSize(priceRef.current.value);
+    },[]);
     return (
         <div>
             {/* <div>
@@ -53,7 +57,7 @@ export default function Card(props) {
                                 )
                             })}
                         </select>
-                        <select className='m-2 h-100 text-primary-emphasis bg-success rounded' onChange={(e)=> setSize(e.target.value)}>
+                        <select className='m-2 h-100 text-primary-emphasis bg-success rounded' ref={priceRef} onChange={(e)=> setSize(e.target.value)}>
                                 {priceOption.map((data)=>{
                                     return <option key={data} value={data}>{data}</option>
                                 })}
@@ -70,4 +74,4 @@ export default function Card(props) {
         </div>
     )
 }
-// https://youtu.be/JbsZjKhMAqY?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=1765
+// https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp
