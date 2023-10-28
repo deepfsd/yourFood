@@ -12,6 +12,7 @@ export default function Card(props) {
         await dispatch({type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: props.finalPrice, qty: qty, size: size})
         console.log(data);
     }
+    let finalPrice = qty * parseInt(options[size]);
     return (
         <div>
             {/* <div>
@@ -59,7 +60,7 @@ export default function Card(props) {
                         </select>
 
                         <div className='d-inline h-100 fs-5'>
-                            Total Price
+                            ₹{finalPrice}/-
                         </div>
                         <hr />
                         <button className={`btn btn-success justify-center ms-2`} onClick={handleAddToCart}>Add to Cart</button>
@@ -69,4 +70,4 @@ export default function Card(props) {
         </div>
     )
 }
-// https://youtu.be/JbsZjKhMAqY?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=1680
+// https://youtu.be/JbsZjKhMAqY?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=1765
