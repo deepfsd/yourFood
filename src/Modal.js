@@ -32,7 +32,7 @@ export default function Modal({children,onClose}) {
             </div>
         </div>
     </>,
-    document.getElementById("cart-root")
+    document.getElementById('cart-root')
   )
 }
 

@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Modal from '../Modal';
 import Badge from 'react-bootstrap/Badge';
+import Cart from '../screens/Cart';
 export default function Navbar() {
+  const [cartView, setCartView] = useState(false);
   const navigate = useNavigate();
   const handleLogout = ()=>{
       localStorage.removeItem("authToken");
@@ -32,10 +35,11 @@ export default function Navbar() {
             </div>
             :
             <div>
-              <div className='btn bg-white text-success mx-2'>
+              <div className='btn bg-white text-success mx-2' onClick={()=>{setCartView(true)}}>
                 My Cart {" "}
                 <Badge pill bg="danger"> 2 </Badge>
               </div>
+              {cartView? <Modal onClose={()=>setCartView(false)}><Cart/></Modal>: null}
               <div className='btn bg-white text-danger mx-2' onClick={handleLogout}>
                 Logout
               </div>
@@ -46,4 +50,4 @@ export default function Navbar() {
     </nav></div>
   )
 }
-// https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=106
+// https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=758
