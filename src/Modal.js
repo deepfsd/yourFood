@@ -1,40 +1,57 @@
-import React from 'react'
-import ReactDom from 'react-dom'
+
+
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const MODAL_STYLES = {
-    postion: 'fixed',
-    top: '50%',
-    left: '50%',
-    backgroundColor: 'rgb(34,34,34)',
-    transform: 'translate(-50%, -50%)',
-    zIndex:1000,
-    height: '90%',
-    width: '90%'
-}
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  backgroundColor: 'rgb(34, 34, 34)',
+  transform: 'translate(-50%, -50%)',
+  zIndex: 1000,
+  height: '90%',
+  width: '90%',
+  overflow: 'hidden',
+};
 
 const OVERLAY_STYLES = {
-    postion: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0,0,0,.7)',
-    zIndex: 1000
-}
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: 'rgba(0, 0, 0, 0.7)',
+  zIndex: 1000
+};
 
-export default function Modal({children,onClose}) {
-  return ReactDom.createPortal(
+const BUTTON_STYLES = {
+  position: 'absolute',
+  top: '10px',
+  right: '10px',
+  backgroundColor: 'transparent',
+  color: '#fff',
+  border: 'none',
+  cursor: 'pointer'
+};
+const CART_STYLES = {
+  maxHeight: '80%', // Define a maximum height for the cart area
+  overflowY: 'auto', // Enable vertical scrolling if content exceeds the maximum height
+};
+
+const Modal = ({ children, onClose }) => {
+  return ReactDOM.createPortal(
     <>
-        <div style={OVERLAY_STYLES}>
-            <div style={MODAL_STYLES}>
-                <button className='btn bg-danger fs-4' style={{marginLeft: "90%", marginTop: "-35%"}} onClick={onClose}> X </button>
-                {children}
-            </div>
+      <div style={OVERLAY_STYLES}>
+        <div style={MODAL_STYLES}>
+          <button style={BUTTON_STYLES} onClick={onClose}>X</button>
+          <div style={CART_STYLES}>{children}</div>
         </div>
+      </div>
     </>,
     document.getElementById('cart-root')
-  )
-}
-
-// https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=506
-
+    );
+  };
+  
+  export default Modal;
+  // // https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=506

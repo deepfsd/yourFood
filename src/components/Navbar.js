@@ -39,7 +39,7 @@ export default function Navbar() {
                 My Cart {" "}
                 <Badge pill bg="danger"> 2 </Badge>
               </div>
-              {cartView? <Modal onClose={()=>setCartView(false)}><Cart/></Modal>: null}
+              {cartView? <Modal onClose={()=>setCartView(false)}><Cart></Cart></Modal>: null}
               <div className='btn bg-white text-danger mx-2' onClick={handleLogout}>
                 Logout
               </div>
@@ -50,4 +50,4 @@ export default function Navbar() {
     </nav></div>
   )
 }
-// https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=758
+// https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=811
