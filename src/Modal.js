@@ -25,10 +25,16 @@ const OVERLAY_STYLES = {
 export default function Modal({children,onClose}) {
   return ReactDom.createPortal(
     <>
-        <div>
-            {/* // https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=470 */}
+        <div style={OVERLAY_STYLES}>
+            <div style={MODAL_STYLES}>
+                <button className='btn bg-danger fs-4' style={{marginLeft: "90%", marginTop: "-35%"}} onClick={onClose}> X </button>
+                {children}
+            </div>
         </div>
-    </>
+    </>,
+    document.getElementById("cart-root")
   )
 }
+
+// https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=506
 
