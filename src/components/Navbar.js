@@ -52,4 +52,3 @@ export default function Navbar() {
     </nav></div>
   )
 }
-// https://youtu.be/iFMK6N4hUkw?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=1056
