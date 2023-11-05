@@ -9,14 +9,32 @@ export default function Card(props) {
     const [qty, setQty] = useState(1);
     const [size, setSize] = useState("");
 
-    const handleAddToCart = async ()=>{
-        await dispatch({type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size})
-        console.log(data);
+    const handleAddToCart = async () => {
+        let food = []
+        for (const item of data) {
+            if (item.id === props.foodItem._id) {
+                food = item;
+                break;
+            }
+        }
+        if (food != []) {
+            if (food.size === size) {
+                await dispatch({ type: "UPDATE", id: props.foodItem._id, price: finalPrice, qty: qty })
+                return
+            }
+            else if (food.size != size) {
+                await dispatch({ type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size })
+                return
+            }
+            return
+        }
+        await dispatch({ type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size })
+        // console.log(data);
     }
     let finalPrice = qty * parseInt(options[size]);
-    useEffect(()=>{
+    useEffect(() => {
         setSize(priceRef.current.value);
-    },[]);
+    }, []);
     return (
         <div>
             {/* <div>
@@ -45,22 +63,22 @@ export default function Card(props) {
                     </div>
                 </div> */}
             <div class="card">
-                <img className="card-img-top" src={props.foodItem.img} alt="Card image cap" style={{height:"200px", objectFit:"fill"}} />
+                <img className="card-img-top" src={props.foodItem.img} alt="Card image cap" style={{ height: "200px", objectFit: "fill" }} />
 
                 <div class="card-body">
                     <h5 class="card-title">{props.foodItem.name}</h5>
                     <div className="container w-100">
-                        <select className='m-2 h-100 primary text-primary-emphasis bg-success rounded ' onChange={(e)=> setQty(e.target.value)}>
+                        <select className='m-2 h-100 primary text-primary-emphasis bg-success rounded ' onChange={(e) => setQty(e.target.value)}>
                             {Array.from(Array(6), (e, i) => {
                                 return (
                                     <option key={i + 1} value={i + 1}>{i + 1}</option>
                                 )
                             })}
                         </select>
-                        <select className='m-2 h-100 text-primary-emphasis bg-success rounded' ref={priceRef} onChange={(e)=> setSize(e.target.value)}>
-                                {priceOption.map((data)=>{
-                                    return <option key={data} value={data}>{data}</option>
-                                })}
+                        <select className='m-2 h-100 text-primary-emphasis bg-success rounded' ref={priceRef} onChange={(e) => setSize(e.target.value)}>
+                            {priceOption.map((data) => {
+                                return <option key={data} value={data}>{data}</option>
+                            })}
                         </select>
 
                         <div className='d-inline h-100 fs-5'>
