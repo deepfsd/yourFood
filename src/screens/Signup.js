@@ -105,5 +105,3 @@ export default function Signup() {
     </>
   );
 }
-
-// https://youtu.be/Sonj_Mtmueo?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=2801
