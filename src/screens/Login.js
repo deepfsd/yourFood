@@ -29,6 +29,7 @@ export default function Login() {
       alert('Enter Valid Credentials');
     }
     if (json.success) {
+      localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("authToken", json.authToken);
       console.log(localStorage.getItem("authToken"));
       navigate("/");
@@ -85,3 +86,4 @@ export default function Login() {
   )
 }
     
+// https://youtu.be/iLng4XfiRm8?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=347

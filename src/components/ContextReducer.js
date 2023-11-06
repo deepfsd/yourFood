@@ -41,4 +41,3 @@ export const CartProvider = ({children})=>{
 export const useCart = () => useContext(CartStateContext);
 export const useDispatchCart = () => useContext(CartDispatchContext);
 
-// https://youtu.be/iLng4XfiRm8?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=8
