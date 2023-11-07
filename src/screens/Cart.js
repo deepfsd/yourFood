@@ -69,7 +69,7 @@ export default function Cart() {
             </div> */}
                 <div className='position-absolute bottom-0 start-50 translate-middle-x text-center'>
                     <h1 className='fs-2 mb-3'>Total Price: {totalPrice}/-</h1>
-                    <button className='btn bg-success'>Check Out</button>
+                    <button className='btn bg-success' onClick={handleCheckOut}>Check Out</button>
                 </div>
             </div>
         </div>

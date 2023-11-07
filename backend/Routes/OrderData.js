@@ -20,7 +20,9 @@ router.post('/orderData', async (req, res)=>{
             })
         } catch(error){
             console.log(error.message)
-            res.send("Server Error", error.message);
+            // res.send("Server Error", error.message);
+            res.status("Server Error")
+
         }
     }
 
@@ -32,11 +34,15 @@ router.post('/orderData', async (req, res)=>{
                         res.json({success: true})
                     })
         } catch(error){
-            res.send("Server Error", error.message)
+            // res.send("Server Error", error.message)
+            res.status("Server Error")
         }
     }
+
+
 })
 
-// https://youtu.be/iLng4XfiRm8?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=1104
-
 module.exports = router;
+// https://youtu.be/iLng4XfiRm8?list=PLI0saxAvhd_OdRWyprSe3Mln37H0u4DAp&t=1246
+
+
