@@ -47,6 +47,9 @@ function Signup() {
     if (!credentials.geolocation.trim()) {
       newErrors.geolocation = 'Geolocation is required';
       isValid = false;
+    } else if (credentials.geolocation.length < 15) {
+      newErrors.geolocation = 'Please provide a detailed address for better accuracy';
+      isValid = false;
     }
 
     setErrors(newErrors);
@@ -56,32 +59,32 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-    const response = await fetch('http://localhost:5000/api/createuser', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: credentials.name,
-        email: credentials.email,
-        password: credentials.password,
-        location: credentials.geolocation,
-      }),
-      
-    });
-    navigate('/login');
-  }
-};
+      const response = await fetch('http://localhost:5000/api/createuser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: credentials.name,
+          email: credentials.email,
+          password: credentials.password,
+          location: credentials.geolocation,
+        }),
+
+      });
+      navigate('/login');
+    }
+  };
 
   //   const json = await response.json();
   //   console.log(json);
   //   if (!json.success) {
   //     alert('Enter Valid Credentials');
   //   }
-  
+
   // };
 
- 
+
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: '' }); // Clear the error when the input changes
@@ -92,7 +95,7 @@ function Signup() {
       <form action="" method="post" id="form" onSubmit={handleSubmit} >
         <div id="form-body">
           <div id="welcome-lines">
-            <div id="welcome-line-1">Tiffin <img src={logo}/></div>
+            <div id="welcome-line-1">Tiffin <img src={logo} /></div>
             <div id="welcome-line-2">Welcome,
               <div>
                 <Link to="/login" className='log' >
@@ -102,35 +105,39 @@ function Signup() {
           </div>
           <div id="input-area">
             <div class="form-inp">
-              <input placeholder="Name" type="text" name="name" value={credentials.name}
+              <input placeholder={errors.name ? errors.name : 'Name'}
+                type="text" name="name" value={credentials.name}
                 onChange={onChange}
               />
-                        {errors.name && <span>{errors.name}</span>}
+            </div>
+            <div class="form-inp">
+              <input placeholder="ADDRESS"
+                type="text" name="geolocation" value={credentials.geolocation}
+                onChange={onChange}
+              />
+              {errors.geolocation && <span style={{color:"#FF0000",fontSize:"small"}}>{errors.geolocation}</span>}
 
             </div>
             <div class="form-inp">
-              <input placeholder="Address" type="text" name="geolocation"  value={credentials.geolocation}
-              onChange={onChange}
+              <input placeholder="Email"
+                type="text" name="email" value={credentials.email}
+                onChange={onChange}
               />
-             
+              {errors.email && <span style={{color:"#FF0000",fontSize:"small"}}>{errors.email}</span>}
 
             </div>
             <div class="form-inp">
-              <input placeholder="Email Address" type="text" name="email" value={credentials.email}
+              <input placeholder="PASSWORD"
+                type="password" name="password" value={credentials.password}
                 onChange={onChange}
               />
-                         {errors.email && <span>{errors.email}</span>}
-            </div>
-            <div class="form-inp">
-              <input placeholder="Password" type="password" name="password" value={credentials.password}
-                onChange={onChange}
-              />
+              {errors.password && <span style={{color:"#FF0000",fontSize:"small"}}>{errors.password}</span>}
 
             </div>
           </div>
           <div id="submit-button-cvr" >
-                    <button id="submit-button" type="submit">Continue</button>
-                  </div>
+            <button id="submit-button" type="submit">Continue</button>
+          </div>
         </div>
       </form>
     </div>

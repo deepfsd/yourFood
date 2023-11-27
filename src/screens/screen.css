@@ -46,14 +46,22 @@ img:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
-/* #form-body {
+#form-body {
   position: absolute;
   top: 50%;
-  right: 25px;
-  left: 25px;
-  width: 230px;
-  margin: -156px auto 0 auto;
-} */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 25px;
+  background-color: #161616;
+  box-shadow: 0px 15px 60px #00FF7F;
+  outline: 1px solid #2b9962;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column; /* Ensure child elements stack vertically */
+  min-height: 472px; /* Set a minimum height to contain the button */
+}
+
 
 #welcome-lines {
   text-align: center;
