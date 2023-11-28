@@ -152,4 +152,8 @@
  }
  
  
- 
+ @media (min-width: 300px){
+   #carousel > div.carousel-caption.d-none.d-md-block{
+       display: block!important;
+    }
+  }

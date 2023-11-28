@@ -1,4 +1,7 @@
 import React from 'react'
+import "../components/component.css"
+
+
 
 export default function Carousel() {
     return (
